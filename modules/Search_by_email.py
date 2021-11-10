@@ -1,43 +1,40 @@
 import requests
 import urllib.request
+import urllib.parse
 from bs4 import BeautifulSoup
 import ssl
-
-# Packages pip install googlesearch-python
-
-# from googlesearch import search
-
+from decouple import config
 
 def main():
+    
     emailSearched = input('Who is the person whose email you want to track ?\n')
+    emailSearched = urllib.parse.quote_plus(emailSearched)
 
-    # Protonmail
+    # SSL
 
-    print('###################### PROTONMAIL ######################')
-    req = urllib.request.Request('https://api.protonmail.ch/pks/lookup?op=index&search=' + emailSearched + '@protonmail.com')
     gcontext = ssl.SSLContext()
-    with urllib.request.urlopen(req, context=gcontext) as response:
-        page = response.read()
-        soup = BeautifulSoup(page, features = "lxml")
-        for line in soup:
-            print(line.text)
-        print('#####################################################')
 
+    # Facebook
 
+    print('###################### Facebook ######################')
 
-    # Yahoo
-    print('###################### Yahoo ######################')
-    url = 'http://login.yahoo.com/?.src=ym&pspid=2023392333&activity=ybar-mail&.lang=fr-FR&.intl=fr&.done=https%3A%2F%2Fmail.yahoo.com%2Fd%3F.intl%3Dfr%26.lang%3Dfr-FR%26pspid%3D2023392333%26activity%3Dybar-mail&username=' + emailSearched + '@yahoo.com'
-    requests.Session()
-    req = requests.post(url=url)
-    f = open('test.txt', 'w+')
-    f.write(str(req.text))
-    find = False
-    for line in req.text:
-        if 'error-msg hide' in str(line):
-            find = True
-    if find == True:
-        print( emailSearched + '@yahoo.com')
-    else:
-        print('no email found')
+    url = 'https://www.facebook.com/search/people/?q=' + emailSearched
+
+    req = requests.get("https://graph.facebook.com/search?access_token=" + config('FACEBOOK_TOKEN') +  "&q=" + emailSearched + "&type=page")
+
+    # req = requests.get(url)
+
+    print(req.text)
+
+    # divUserds = '<div class="rq0escxv l9j0dhe7 du4w35lb hybvsw6c io0zqebd m5lcvass fbipl8qg nwvqtn77 k4urcfbm ni8dbmo4 stjgntxs sbcfpzgs" style="border-radius: max(0px, min(8px, ((100vw - 4px) - 100%) * 9999)) / 8px;">'
+
+    # req = urllib.request.Request(url)
+
+    # with urllib.request.urlopen(req, context=gcontext) as response:
+    #     page = response.read()
+    #     soup = BeautifulSoup(page, features = "lxml")
+    #     for line in soup:
+    #         f = open('test.txt', 'w+')
+    #         f.write(str(line))
+
     print('#####################################################')
