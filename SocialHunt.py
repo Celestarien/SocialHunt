@@ -1,4 +1,4 @@
-from modules import Search_by_email
+from modules import Search_by_email, Search_email
 
 
 print("  ___                ___  ")
@@ -7,4 +7,4 @@ print("(  V  ) SocialHunt (  V  )")
 print("--m-m----------------m-m--")
 
 
-Search_by_email.main()
+Search_email.main()
