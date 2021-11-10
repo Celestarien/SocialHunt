@@ -9,7 +9,7 @@ import ssl
 
 
 def main():
-    emailSearched = input('Quelle est la personne dont tu veux tracker l\'email ?\n')
+    emailSearched = input('Who is the person whose email you want to track ?\n')
 
     # Protonmail
 
@@ -39,5 +39,5 @@ def main():
     if find == True:
         print( emailSearched + '@yahoo.com')
     else:
-        print('Pas d\'email trouvé à ce nom')
+        print('no email found')
     print('#####################################################')
