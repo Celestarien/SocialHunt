@@ -3,7 +3,7 @@ import urllib.request
 import urllib.parse
 from bs4 import BeautifulSoup
 import ssl
-from decouple import config
+# from decouple import config
 
 def main():
     

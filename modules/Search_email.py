@@ -1,3 +1,4 @@
+import json
 import requests
 import urllib.request
 import urllib.parse
@@ -52,11 +53,11 @@ def main():
     requests.Session()
 
 
-    data = {'browser-fp-data' : '{"language":"fr","colorDepth":24,"deviceMemory":"unknown","pixelRatio":1,"hardwareConcurrency":12,"timezoneOffset":-60,"timezone":"Europe/Paris","sessionStorage":1,"localStorage":1,"indexedDb":1,"cpuClass":"unknown","platform":"Linux x86_64","doNotTrack":"1","plugins":{"count":0,"hash":"24700f9f1986800ab4fcc880530dd0ed"},"canvas":"canvas winding:yes~canvas","webgl":1,"webglVendorAndRenderer":"NVIDIA Corporation~NVIDIA GeForce GTX 1050 Ti/PCIe/SSE2","adBlock":0,"hasLiedLanguages":0,"hasLiedResolution":0,"hasLiedOs":0,"hasLiedBrowser":0,"touchSupport":{"points":0,"event":0,"start":0},"fonts":{"count":14,"hash":"a24a80806be03ad4525b3b1475a3d3fe"},"audio":"35.73833402246237","resolution":{"w":"1920","h":"1080"},"availableResolution":{"w":"1051","h":"1920"},"ts":{"serve":1637701566624,"render":1637701564127}}' , 'crumb' : 'PUwz9RaTz7C', 'acrumb' : 'myWuwAD6' , 'sessionIndex' : 'Qw--' , 'displayName' : '', 'deviceCapability' : '{"pa":{"status":false}}' , 'username': emailSearched, 'signin' : 'Suivant' , 'persistent' : 'y' }
+    data = {'browser-fp-data' : '{"language":"fr","colorDepth":24,"deviceMemory":"unknown","pixelRatio":1,"hardwareConcurrency":12,"timezoneOffset":-60,"timezone":"Europe/Paris","sessionStorage":1,"localStorage":1,"indexedDb":1,"cpuClass":"unknown","platform":"Linux x86_64","doNotTrack":"1","plugins":{"count":0,"hash":"24700f9f1986800ab4fcc880530dd0ed"},"canvas":"canvas winding:yes~canvas","webgl":1,"webglVendorAndRenderer":"NVIDIA Corporation~NVIDIA GeForce GTX 1050 Ti/PCIe/SSE2","adBlock":0,"hasLiedLanguages":0,"hasLiedResolution":0,"hasLiedOs":0,"hasLiedBrowser":0,"touchSupport":{"points":0,"event":0,"start":0},"fonts":{"count":14,"hash":"a24a80806be03ad4525b3b1475a3d3fe"},"audio":"35.73833402246237","resolution":{"w":"1920","h":"1080"},"availableResolution":{"w":"1051","h":"1920"},"ts":{"serve":1637701566624,"render":1637701564127}}' , 'crumb' : 'PUwz9RaTz7C', 'acrumb' : 'myWuwAD6' , 'sessionIndex' : 'Qw--' , 'displayName' : '', 'deviceCapability' : '{"pa":{"status":false}}' , 'username': emailSearched, 'passwd': '', 'signin' : 'Suivant' , 'persistent' : 'y' }
     
     # Modification du format Get en Post (Voir Burp)
     req = requests.post(url,  headers = user_agent, data=data, cookies=cookies)
-    print(req.text)
+    # print(req.text)
     
     # f = open('test.txt', 'w+', encoding='utf-8')
     # f.write(req)
@@ -89,3 +90,20 @@ def main():
     #         print( emailSearched + '@yahoo.com')
     #         # print(line + '##' + str(compteur))        
     print('#####################################################')
+
+
+    print('###################### Outlook ######################')
+
+    url = 'https://login.live.com/'
+    cookies = {'Cookie' : 'uaid=ec05d8a1bdd247cdb159a6253e004eee; MSPRequ=id=292841&lt=1637767881&co=0; logonLatency=LGN01=637733593115401343; MSCC=77.196.149.138-FR; OParams=11O.DcxP2imeIiN7klXT9wceFcW0dRMuk3XoNLQcuQ*pWApPMN1Bi!nhM0gkxWBTFEMY7oDP*lG*sfy*UkjD5*zkGvqowJX9T3UUeU18nq2StyL3t3ZxrFwpEPCUlYKHRfN*LjgfCQdC2Koi80l*u9pWMreewZBivv9!FGe88F5p5kEN7RUjXNL4l3oGMK*MUcyRmnfEX49CbTuzIq6Ny5sJ3tV2CNFNwcfTwDBw4Wd7ayI7py3EqKuNSWYLzU5aaDUB*uriREdwNZEpSNEJI2raBoqexpKTDHQQeB7t6rHSiZH5n4is1LTEv9i8ZioBYDBzdQ22yTidYdABk9BtEW5JT3qEVwOHdoQdmgjwzIL25BfLLxLD5TKB!tdOwe6GYnLu7RNgjWoXaPxfK!5bZg7tZhQ*OPopiTpmWFa1u6SZBR5T5S!iG0f85eE4d7vINBcglnUyUiONeOk2!ENUs4GFvrbNsBi!E!y7*9hsTJC0lkqSQgciTkambF2S0dn0zlP7RsUbtYVDIhiROyq1ZrWzvULjUNB7B*u!eXk!xFfGzGBpHBDsHfVfWF3x3r6ldDbSzC6FGYjfr5aQ6yVLmq1HgCgxQqg3ozoA!nvLSX3cVz2Hr7E!gyiWzF7F9u*TYHLW3r9DhJIB4K32QoFRlQDq9L!I2qyNzEo3dJJAWlxsyXmKB2V0!DTWCiWJou*wBTXHXw$$; MSPOK=$uuid-5fd32f1a-4443-495d-958a-e7a99ae8dbfe$uuid-aaa8d78c-0d51-4e93-b908-407f993c6755$uuid-3ffc294e-1fbd-4e02-af91-6e0ecd03629c$uuid-16795d34-d43b-4997-b3c0-9e68eef1d071$uuid-502d5119-0646-4ce1-93ea-0724b0104667$uuid-5c69ea66-1f90-45bf-b9f1-2a5e8bdb54bc$uuid-22344a6d-9c19-4757-8ff6-1bfd5bb3cea0$uuid-15e89dd0-c780-4d30-9248-343d347ec9e7$uuid-dfe4272c-37ba-4cf3-bcac-46d0ec470181$uuid-626fbad2-a4df-459a-9206-f8710c15706a; wlidperf=FR=L&ST=1637767695598'}
+    data = {'browser-fp-data' : '{"username":'+ emailSearched +', "uaid":"ec05d8a1bdd247cdb159a6253e004eee", "isOtherIdpSupported":"true", "checkPhones":"false", "isRemoteNGCSupported":"true", "isCookieBannerShown":"false", "isFidoSupported":"false", "forceotclogin":"false", "otclogindisallowed":"false", "isExternalFederationDisallowed":"false", "isRemoteConnectSupported":"false", "federationFlags":3, "isSignup":"false", "flowToken":"DbHyQNcvfaoYbxjAx2lbzXXZD*v!1xpRyLYDubEobgCJRYUiclY3mflXOEPzavzMiQM63NS4APOWNkDdEFLoqmDypITKHafv3WP8HoOHCLfcdj8ocKGDKYF1ua6WIoyM0v5L1eFf2Yb1SYI0GcwWQrLnI*nsUkkOSuuibdOtedS1IlFKCTxu5YIiNlnK*t1drrSyXk7Jv1PZkiSIy50!iprVxE7Wpk1Yml9fpzxARuhIwJ4!Bnvo0KkZyUYPwTONbZoTxZK!tja9LwyKDgCAbGw$"}'}
+
+    reqOutlook = requests.post(url, headers=user_agent, data=data, cookies=cookies)
+
+    rep = json.load(reqOutlook)
+
+    print(rep)
+
+    print('#####################################################')
+
+    
