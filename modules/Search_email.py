@@ -100,9 +100,18 @@ def main():
 
     reqOutlook = requests.post(url, headers=user_agent, data=data, cookies=cookies)
 
-    rep = json.load(reqOutlook)
+    f = open('test.txt', 'w+')
+    f.write(reqOutlook.text)
 
-    print(rep)
+    if 'account' in reqOutlook.text:
+        print('Not found !')
+    else:
+        print('found !')
+    # print(reqOutlook.text)
+
+    # rep = json.load(reqOutlook)
+
+    # print(rep)
 
     print('#####################################################')
 
