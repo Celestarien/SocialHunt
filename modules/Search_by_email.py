@@ -6,7 +6,7 @@ import ssl
 # from decouple import config
 
 def main():
-    
+
     emailSearched = input('Who is the person whose email you want to track ?\n')
     emailSearched = urllib.parse.quote_plus(emailSearched)
 
@@ -18,7 +18,7 @@ def main():
 
     print('###################### Facebook ######################')
 
-    url = 'https://www.facebook.com/search/people/?q=' + emailSearched
+    url = f'https://www.facebook.com/search/people/?q={emailSearched}'
 
     req = requests.get("https://graph.facebook.com/search?access_token=" + config('FACEBOOK_TOKEN') +  "&q=" + emailSearched + "&type=page")
 

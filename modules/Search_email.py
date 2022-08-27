@@ -24,7 +24,10 @@ def main():
     # Protonmail
 
     print('###################### PROTONMAIL ######################')
-    req = urllib.request.Request('https://api.protonmail.ch/pks/lookup?op=index&search=' + emailSearched + '@protonmail.com')
+    req = urllib.request.Request(
+        f'https://api.protonmail.ch/pks/lookup?op=index&search={emailSearched}@protonmail.com'
+    )
+
     with urllib.request.urlopen(req, context=gcontext) as response:
         page = response.read()
         soup = BeautifulSoup(page, features = "lxml")
@@ -54,11 +57,11 @@ def main():
 
 
     data = {'browser-fp-data' : '{"language":"fr","colorDepth":24,"deviceMemory":"unknown","pixelRatio":1,"hardwareConcurrency":12,"timezoneOffset":-60,"timezone":"Europe/Paris","sessionStorage":1,"localStorage":1,"indexedDb":1,"cpuClass":"unknown","platform":"Linux x86_64","doNotTrack":"1","plugins":{"count":0,"hash":"24700f9f1986800ab4fcc880530dd0ed"},"canvas":"canvas winding:yes~canvas","webgl":1,"webglVendorAndRenderer":"NVIDIA Corporation~NVIDIA GeForce GTX 1050 Ti/PCIe/SSE2","adBlock":0,"hasLiedLanguages":0,"hasLiedResolution":0,"hasLiedOs":0,"hasLiedBrowser":0,"touchSupport":{"points":0,"event":0,"start":0},"fonts":{"count":14,"hash":"a24a80806be03ad4525b3b1475a3d3fe"},"audio":"35.73833402246237","resolution":{"w":"1920","h":"1080"},"availableResolution":{"w":"1051","h":"1920"},"ts":{"serve":1637701566624,"render":1637701564127}}' , 'crumb' : 'PUwz9RaTz7C', 'acrumb' : 'myWuwAD6' , 'sessionIndex' : 'Qw--' , 'displayName' : '', 'deviceCapability' : '{"pa":{"status":false}}' , 'username': emailSearched, 'passwd': '', 'signin' : 'Suivant' , 'persistent' : 'y' }
-    
+
     # Modification du format Get en Post (Voir Burp)
     req = requests.post(url,  headers = user_agent, data=data, cookies=cookies)
     # print(req.text)
-    
+
     # f = open('test.txt', 'w+', encoding='utf-8')
     # f.write(req)
     # f.close()
@@ -67,7 +70,7 @@ def main():
     # lines = f.readlines()
     # for line in lines:
     #     print(line)
-    
+
     # req = urllib.request.Request(url, method='POST')
     # # f = open('test.txt', 'w+')
     # # f.write(str(req))
@@ -83,8 +86,8 @@ def main():
     # f = open('test.txt', 'r', encoding="utf-8")
     # lines = f.readlines()
 
-    
-    
+
+
     # for line in lines:
     #     if '<p class="error-msg hide" id="username-error" role="alert"></p>\n' in line:
     #         print( emailSearched + '@yahoo.com')
